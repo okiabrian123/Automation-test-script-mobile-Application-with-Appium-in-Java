@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>Automation test script mobile Application with Appium in Java</artifactId>
+    <artifactId>automation-test-script-mobile-application-appium-java</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
@@ -37,13 +37,6 @@
     </dependencies>
 
     <build>
-        <extensions>
-            <extension>
-                <groupId>kr.motd.maven</groupId>
-                <artifactId>os-maven-plugin</artifactId>
-                <version>1.6.2</version>
-            </extension>
-        </extensions>
         <plugins>
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>

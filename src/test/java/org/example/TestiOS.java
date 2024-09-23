@@ -29,7 +29,8 @@ public class TestiOS {
         caps.setCapability("appium:automationName","XCUITest");
         caps.setCapability("appium:platformVersion","17.4");
         caps.setCapability("appium:deviceName","iPhone SE (3rd generation)");
-        caps.setCapability(  "appium:app","/Users/macmini/AutomationTest/Automation_test_script_iOS_application_with_Appium_in_Java/apps/UIKitCatalog.app");
+        String projectDir = System.getProperty("user.dir");
+        caps.setCapability("appium:app",projectDir+"/apps/UIKitCatalog.app");
         driver = new IOSDriver(new URL("http://127.0.0.1:4723/"),caps);
         platform="ios";
         bundleId="com.example.apple-samplecode.UICatalog";

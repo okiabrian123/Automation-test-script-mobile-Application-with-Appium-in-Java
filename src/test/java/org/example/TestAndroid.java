@@ -37,7 +37,8 @@ public class TestAndroid {
         caps.setCapability("appium:automationName","UiAutomator2");
         caps.setCapability("appium:platformVersion","14");
         caps.setCapability("appium:deviceName","OPPO A57");
-        caps.setCapability("appium:app","/Users/macmini/AutomationTest/Automation_test_script_iOS_application_with_Appium_in_Java/apps/ApiDemos-debug.apk");
+        String projectDir = System.getProperty("user.dir");
+        caps.setCapability("appium:app",projectDir+"/apps/ApiDemos-debug.apk");
         driver = new AndroidDriver((new URL("http://127.0.0.1:4723/")),caps);
         platform="android";
         appId=tools.getAppIdAndroid(driver);
