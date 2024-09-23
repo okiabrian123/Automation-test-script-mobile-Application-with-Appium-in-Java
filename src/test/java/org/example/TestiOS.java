@@ -1,35 +1,26 @@
 package org.example;
+import com.google.common.collect.ImmutableMap;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileCommand;
-import io.appium.java_client.TouchAction;
 import io.appium.java_client.ios.IOSDriver;
-import io.appium.java_client.remote.MobileBrowserType;
-import io.appium.java_client.touch.WaitOptions;
-import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
-import javax.swing.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 
-public class LoginTest {
+public class TestiOS {
     AppiumDriver driver;
-
+    String bundleId;
+    String platform;
 
     @BeforeTest
     public void setup() throws MalformedURLException {
@@ -40,31 +31,9 @@ public class LoginTest {
         caps.setCapability("appium:deviceName","iPhone SE (3rd generation)");
         caps.setCapability(  "appium:app","/Users/macmini/AutomationTest/Automation_test_script_iOS_application_with_Appium_in_Java/apps/UIKitCatalog.app");
         driver = new IOSDriver(new URL("http://127.0.0.1:4723/"),caps);
-    }
+        platform="ios";
+        bundleId="com.example.apple-samplecode.UICatalog";
 
-    public void scrollDown() {
-        Dimension size = driver.manage().window().getSize();
-        int height = size.getHeight();
-        int width = size.getWidth();
-
-        // Tentukan titik awal dan akhir untuk scroll
-        int startX = width / 2;
-        int startY = (int) (height * 0.8);
-        int endY = (int) (height * 0.2);
-
-        // Menggunakan PointerInput dan W3C Actions API
-        PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-        Sequence swipe = new Sequence(finger, 1);
-
-        // Tekan titik awal
-        swipe.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY));
-        swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
-
-        // Geser ke titik akhir
-        swipe.addAction(finger.createPointerMove(Duration.ofMillis(1000), PointerInput.Origin.viewport(), startX, endY));
-        swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-
-        driver.perform(Arrays.asList(swipe));
     }
 
     @Test
@@ -74,11 +43,18 @@ public class LoginTest {
 
     @Test
     public void A002(){
-        scrollDown();
-        driver.findElement(By.xpath("//XCUIElementTypeStaticText[@name=\"Text Fields\"]")).click();
+        tools.resetApp(driver,platform,bundleId,null);
+        By locator_textField_button = By.xpath("//XCUIElementTypeStaticText[@name=\"Text Fields\"]");
+        while (true){
+            if(tools.scrollDown(driver,locator_textField_button)){
+                break;
+            }
+        }
+        driver.findElement(locator_textField_button).click();
         WebElement textField =driver.findElement(AppiumBy.iOSClassChain("**/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[1]/XCUIElementTypeTextField"));
         textField.sendKeys("halo");
     }
+
 
     @AfterTest
     public void close(){

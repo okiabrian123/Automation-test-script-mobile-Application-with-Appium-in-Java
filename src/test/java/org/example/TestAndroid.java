@@ -1,13 +1,20 @@
 package org.example;
+import com.google.common.collect.ImmutableMap;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.pagefactory.DefaultElementLocator;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -18,58 +25,52 @@ import java.time.Duration;
 import java.util.Arrays;
 
 
-public class TestiOS {
+public class TestAndroid {
     AppiumDriver driver;
-
+    String appId;
+    String platform;
 
     @BeforeTest
     public void setup() throws MalformedURLException {
         DesiredCapabilities caps = new DesiredCapabilities();
-        caps.setCapability("appium:platform","iOS");
-        caps.setCapability("appium:automationName","XCUITest");
-        caps.setCapability("appium:platformVersion","17.4");
-        caps.setCapability("appium:deviceName","iPhone SE (3rd generation)");
-        caps.setCapability(  "appium:app","/Users/macmini/AutomationTest/Automation_test_script_iOS_application_with_Appium_in_Java/apps/UIKitCatalog.app");
-        driver = new IOSDriver(new URL("http://127.0.0.1:4723/"),caps);
+        caps.setCapability("appium:platform","Android");
+        caps.setCapability("appium:automationName","UiAutomator2");
+        caps.setCapability("appium:platformVersion","14");
+        caps.setCapability("appium:deviceName","OPPO A57");
+        caps.setCapability("appium:app","/Users/macmini/AutomationTest/Automation_test_script_iOS_application_with_Appium_in_Java/apps/ApiDemos-debug.apk");
+        driver = new AndroidDriver((new URL("http://127.0.0.1:4723/")),caps);
+        platform="android";
+        appId=tools.getAppIdAndroid(driver);
     }
 
-    public void scrollDown() {
-        Dimension size = driver.manage().window().getSize();
-        int height = size.getHeight();
-        int width = size.getWidth();
 
-        // Tentukan titik awal dan akhir untuk scroll
-        int startX = width / 2;
-        int startY = (int) (height * 0.8);
-        int endY = (int) (height * 0.2);
-
-        // Menggunakan PointerInput dan W3C Actions API
-        PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-        Sequence swipe = new Sequence(finger, 1);
-
-        // Tekan titik awal
-        swipe.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY));
-        swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
-
-        // Geser ke titik akhir
-        swipe.addAction(finger.createPointerMove(Duration.ofMillis(1000), PointerInput.Origin.viewport(), startX, endY));
-        swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-
-        driver.perform(Arrays.asList(swipe));
-    }
 
     @Test
     public void A001(){
-         driver.findElement(By.xpath("//XCUIElementTypeStaticText[@name=\"Buttons\"]")).click();
+         driver.findElement(By.xpath("//android.widget.TextView[@content-desc=\"App\"]")).click();
     }
 
     @Test
     public void A002(){
-        scrollDown();
-        driver.findElement(By.xpath("//XCUIElementTypeStaticText[@name=\"Text Fields\"]")).click();
-        WebElement textField =driver.findElement(AppiumBy.iOSClassChain("**/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[1]/XCUIElementTypeTextField"));
+        By locator_wait = By.xpath("//android.widget.TextView[@content-desc=\"Views\"]");
+        tools.resetApp(driver,platform,appId,locator_wait);
+        // Tunggu sampai elemen tertentu muncul setelah aplikasi diluncurkan
+
+
+        driver.findElement(By.xpath("//android.widget.TextView[@content-desc=\"Views\"]")).click();
+        By locator_textField_button =AppiumBy.androidUIAutomator("new UiSelector().text(\"TextFields\")");
+        while (true){
+            if(tools.scrollDown(driver,locator_textField_button)){
+                break;
+            }
+        }
+        driver.findElement(locator_textField_button).click();
+        WebElement textField =driver.findElement(AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"io.appium.android.apis:id/edit\")"));
         textField.sendKeys("halo");
     }
+
+
+
 
     @AfterTest
     public void close(){
