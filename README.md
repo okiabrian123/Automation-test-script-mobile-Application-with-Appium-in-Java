@@ -41,7 +41,7 @@ Connect your Android device with USB debugging enabled.
 
 **Add Android application to folder apps**
 example: 
-```
+```bash
 Automation-test-script-mobile-Application-with-Appium-in-Java/apps/ApiDemos-debug.apk
 ```
 **Launch Appium:**
@@ -59,7 +59,7 @@ mvn -Dtest=TestAndroid test -DandroidVersion=14 -DandroidName="OPPO A57" -Dandro
 ```
 
 Note: you can use absolute path directly, example:
-```
+```bash
 mvn -Dtest=TestAndroid test -DandroidVersion=14 -DandroidName="OPPO A57" -DandroidApp="/Users/username/AutomationTest/Automation test script mobile Application/apps/ApiDemos-debug.apk"
 ```
 ### iOS###
@@ -85,7 +85,7 @@ iOS apps = UIKITCatalog.app
  mvn -Dtest=TestiOS test -DiosVersion="17.4" -DiosName="iPhone SE (3rd generation)" -DiosApp="UIKITCatalog.app"√
 ```
 Note: you can use absolute path directly, example:
-```
+```bash
  mvn -Dtest=TestiOS test -DiosVersion="17.4" -DiosName="iPhone SE (3rd generation)" -DiosApp="/Users/username/AutomationTest/Automation test script mobile Application/apps/UIKITCatalog.app"
 ```
 ## Repository Structure
