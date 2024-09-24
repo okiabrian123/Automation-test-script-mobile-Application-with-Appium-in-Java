@@ -39,7 +39,7 @@ For iOS, ensure WebDriverAgent is properly configured for testing.
 ### Android
 Connect your Android device with USB debugging enabled.
 
-**Add application to folder apps**
+**Add Android application to folder apps**
 example: 
 ```
 Automation-test-script-mobile-Application-with-Appium-in-Java/apps/ApiDemos-debug.apk
@@ -65,6 +65,11 @@ mvn -Dtest=TestAndroid test -DandroidVersion=14 -DandroidName="OPPO A57" -Dandro
 ### iOS###
 Connect your iOS device with Developer mode enabled.
 
+**Add iOS application to folder apps**
+example: 
+```
+Automation-test-script-mobile-Application-with-Appium-in-Java/apps/UIKITCatalog.app
+```
 **Launch Appium:**
 
 ```bash
