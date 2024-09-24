@@ -78,7 +78,7 @@ appium
 **Run the tests for iOS(simulator):**<br />
 I only created this for the simulator because I don't have a real iOS device.<br />
 Example:<br />
-iOS version = 14
+iOS version = 14<br />
 Device name = iPhone SE (3rd generation)<br />
 iOS apps = UIKITCatalog.app<br />
 
