@@ -37,55 +37,53 @@ For iOS, ensure WebDriverAgent is properly configured for testing.
 --------------------------------------
 ## Running the Tests
 ### Android
-Connect your Android device with USB debugging enabled.
-
-**Add Android application to folder apps**
+1.Connect your Android device with USB debugging enabled.
+2. Add Android application to folder apps<br />
 example: 
 ```bash
 Automation-test-script-mobile-Application-with-Appium-in-Java/apps/ApiDemos-debug.apk
 ```
-**Launch Appium:**
+3. Launch Appium
 
 ```bash
 appium
 ```
-**Run the tests for Android:**<br />
+4. Run the tests for Android<br />
 Example:<br />
-- Android version = 14<br />
-- Device name = OPPO A57<br />
-- Android apps = ApiDemos-debug.apk<br />
+&nbsp;- Android version = 14<br />
+&nbsp;- Device name = OPPO A57<br />
+&nbsp;- Android apps = ApiDemos-debug.apk<br />
 ```bash
 mvn -Dtest=TestAndroid test -DandroidVersion=14 -DandroidName="OPPO A57" -DandroidApp="ApiDemos-debug.apk"
 ```
 
-Note: you can use absolute path directly, example:
+&nbsp; Note: you can use absolute path directly, example:
 ```bash
 mvn -Dtest=TestAndroid test -DandroidVersion=14 -DandroidName="OPPO A57" -DandroidApp="/Users/username/AutomationTest/Automation test script mobile Application/apps/ApiDemos-debug.apk"
 ```
 ### iOS
-Connect your iOS device with Developer mode enabled.
-
-**Add iOS application to folder apps**
+1. Connect your iOS device with Developer mode enabled.<br />
+2. Add iOS application to folder apps<br />
 example: 
 ```
 Automation-test-script-mobile-Application-with-Appium-in-Java/apps/UIKITCatalog.app
 ```
-**Launch Appium:**
-
+3. Launch Appium
 ```bash
 appium
 ```
-**Run the tests for iOS(simulator):**<br />
-I only created this for the simulator because I don't have a real iOS device.<br />
+4. Run the tests for iOS(simulator)<br />
 Example:<br />
-- iOS version = 14<br />
-- Device name = iPhone SE (3rd generation)<br />
-- iOS apps = UIKITCatalog.app<br />
+&nbsp; - iOS version = 14<br />
+&nbsp; - Device name = iPhone SE (3rd generation)<br />
+&nbsp; - iOS apps = UIKITCatalog.app<br />
 
 ```bash
  mvn -Dtest=TestiOS test -DiosVersion="17.4" -DiosName="iPhone SE (3rd generation)" -DiosApp="UIKITCatalog.app"√
 ```
+
 Note: you can use absolute path directly, example:
+
 ```bash
  mvn -Dtest=TestiOS test -DiosVersion="17.4" -DiosName="iPhone SE (3rd generation)" -DiosApp="/Users/username/AutomationTest/Automation test script mobile Application/apps/UIKITCatalog.app"
 ```
