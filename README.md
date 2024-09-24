@@ -94,8 +94,9 @@ Automation-Test-Mobile-Browser/
 .
 |
 ├── drivers/                # Folder to store your Chromedriver for Android
-├── src/test/java/com.test.example
-│   ├── LoginTest.java           # Test scripts
+├── src/test/java/org.example
+│   ├── TestAndroid.java           # Test scripts
+│   ├── TestiOS.java           # Test scripts
 ├── pom.xml                 # Maven project file for dependencies, plugin and profile
 └── README.md               # Project documentation
 ```
