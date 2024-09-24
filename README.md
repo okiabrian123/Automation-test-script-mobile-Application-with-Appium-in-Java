@@ -62,7 +62,7 @@ Note: you can use absolute path directly, example:
 ```bash
 mvn -Dtest=TestAndroid test -DandroidVersion=14 -DandroidName="OPPO A57" -DandroidApp="/Users/username/AutomationTest/Automation test script mobile Application/apps/ApiDemos-debug.apk"
 ```
-### iOS###
+### iOS
 Connect your iOS device with Developer mode enabled.
 
 **Add iOS application to folder apps**
@@ -89,6 +89,7 @@ Note: you can use absolute path directly, example:
 ```bash
  mvn -Dtest=TestiOS test -DiosVersion="17.4" -DiosName="iPhone SE (3rd generation)" -DiosApp="/Users/username/AutomationTest/Automation test script mobile Application/apps/UIKITCatalog.app"
 ```
+---------------------------------
 ## Repository Structure
 ```bash
 Automation-Test-Mobile-Browser/
