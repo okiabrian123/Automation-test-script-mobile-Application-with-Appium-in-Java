@@ -49,11 +49,11 @@ Automation-test-script-mobile-Application-with-Appium-in-Java/apps/ApiDemos-debu
 ```bash
 appium
 ```
-**Run the tests for Android:**
-Example:
-Android version = 14
-Device name = OPPO A57
-Android apps = ApiDemos-debug.apk 
+**Run the tests for Android:**<br />
+Example:<br />
+Android version = 14<br />
+Device name = OPPO A57<br />
+Android apps = ApiDemos-debug.apk<br />
 ```bash
 mvn -Dtest=TestAndroid test -DandroidVersion=14 -DandroidName="OPPO A57" -DandroidApp="ApiDemos-debug.apk"
 ```
@@ -75,12 +75,13 @@ Automation-test-script-mobile-Application-with-Appium-in-Java/apps/UIKITCatalog.
 ```bash
 appium
 ```
-**Run the tests for iOS(simulator):**
-I only created this for the simulator because I don't have a real iOS device.
-Example:
+**Run the tests for iOS(simulator):**<br />
+I only created this for the simulator because I don't have a real iOS device.<br />
+Example:<br />
 iOS version = 14
-Device name = iPhone SE (3rd generation)
-iOS apps = UIKITCatalog.app
+Device name = iPhone SE (3rd generation)<br />
+iOS apps = UIKITCatalog.app<br />
+
 ```bash
  mvn -Dtest=TestiOS test -DiosVersion="17.4" -DiosName="iPhone SE (3rd generation)" -DiosApp="UIKITCatalog.app"√
 ```
