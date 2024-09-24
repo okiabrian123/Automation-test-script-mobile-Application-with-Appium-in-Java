@@ -27,10 +27,14 @@ public class TestiOS {
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setCapability("appium:platform","iOS");
         caps.setCapability("appium:automationName","XCUITest");
-        caps.setCapability("appium:platformVersion","17.4");
-        caps.setCapability("appium:deviceName","iPhone SE (3rd generation)");
+        caps.setCapability("appium:platformVersion",System.getProperty("iosVersion"));
+        caps.setCapability("appium:deviceName",System.getProperty("iosName"));
         String projectDir = System.getProperty("user.dir");
-        caps.setCapability("appium:app",projectDir+"/apps/UIKitCatalog.app");
+        String path_app=System.getProperty("iosApp");
+        if(!path_app.startsWith("/")){
+            path_app=projectDir+"/apps/"+path_app;
+        }
+        caps.setCapability("appium:app",path_app);
         driver = new IOSDriver(new URL("http://127.0.0.1:4723/"),caps);
         platform="ios";
         bundleId="com.example.apple-samplecode.UICatalog";

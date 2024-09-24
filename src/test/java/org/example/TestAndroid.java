@@ -35,10 +35,14 @@ public class TestAndroid {
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setCapability("appium:platform","Android");
         caps.setCapability("appium:automationName","UiAutomator2");
-        caps.setCapability("appium:platformVersion","14");
-        caps.setCapability("appium:deviceName","OPPO A57");
+        caps.setCapability("appium:platformVersion",System.getProperty("androidVersion"));
+        caps.setCapability("appium:deviceName",System.getProperty("androidName"));
         String projectDir = System.getProperty("user.dir");
-        caps.setCapability("appium:app",projectDir+"/apps/ApiDemos-debug.apk");
+        String path_app=System.getProperty("androidApp");
+        if(!path_app.startsWith("/")){
+            path_app=projectDir+"/apps/"+path_app;
+        }
+        caps.setCapability("appium:app",path_app);
         driver = new AndroidDriver((new URL("http://127.0.0.1:4723/")),caps);
         platform="android";
         appId=tools.getAppIdAndroid(driver);
