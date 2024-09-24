@@ -51,9 +51,9 @@ appium
 ```
 **Run the tests for Android:**<br />
 Example:<br />
-Android version = 14<br />
-Device name = OPPO A57<br />
-Android apps = ApiDemos-debug.apk<br />
+- Android version = 14<br />
+- Device name = OPPO A57<br />
+- Android apps = ApiDemos-debug.apk<br />
 ```bash
 mvn -Dtest=TestAndroid test -DandroidVersion=14 -DandroidName="OPPO A57" -DandroidApp="ApiDemos-debug.apk"
 ```
@@ -78,9 +78,9 @@ appium
 **Run the tests for iOS(simulator):**<br />
 I only created this for the simulator because I don't have a real iOS device.<br />
 Example:<br />
-iOS version = 14<br />
-Device name = iPhone SE (3rd generation)<br />
-iOS apps = UIKITCatalog.app<br />
+- iOS version = 14<br />
+- Device name = iPhone SE (3rd generation)<br />
+- iOS apps = UIKITCatalog.app<br />
 
 ```bash
  mvn -Dtest=TestiOS test -DiosVersion="17.4" -DiosName="iPhone SE (3rd generation)" -DiosApp="UIKITCatalog.app"√
