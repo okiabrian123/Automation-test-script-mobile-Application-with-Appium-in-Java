@@ -9,7 +9,7 @@ Before running the tests, ensure you have the following installed on your system
 - *Android Debug Bridge (ADB)* - Required for Android devices. Install via Android Studio or stand-alone [here](https://developer.android.com/studio/command-line/adb)
 - *Xcode (For iOS)* - Required for iOS devices, available from the Mac App Store.
 
-##Test Apps:
+## Test Apps:
 - ApiDemos-debug.apk - [Download Here](https://github.com/appium/appium/blob/master/packages/appium/sample-code/apps/ApiDemos-debug.apk)
 - UIKITCatalog.app - [Download Here](https://github.com/appium/ios-uicatalog)
 ------------------------------------------------------------------------------------
